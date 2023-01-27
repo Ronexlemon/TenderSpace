@@ -11,7 +11,7 @@ const HeroText = () => {
               Bringing trust and transparency to procurement of services
             </h1>
             <h3 className="max-w-[500px] w-[100%] font-josefin text-indigo-900 text-base">
-              TenderSafi is a blockchain based application that makes it easy to
+              TenderSpace is a blockchain based application that makes it easy to
               advertise and apply for tenders with the highest level of
               transparency.
             </h3>

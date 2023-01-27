@@ -1,6 +1,6 @@
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
-import Logo from "../assets/images/LogoTenderSafi.svg";
+import Logo from "../assets/images/TenderSpaceLogo.svg";
 
 
 const NavbarHome = (props) => {

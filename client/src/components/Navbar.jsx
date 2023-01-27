@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import LogoTenderSafi  from '../assets/images/LogoTenderSafi.svg';
+import LogoTenderSpace  from '../assets/images/TenderSpaceLogo.svg';
 import { Link } from "react-router-dom";
 
 
@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <div className="flex justify-between items-center my-8 mx-2 sm:mx-16">
       <div>
-        <img src={LogoTenderSafi} alt="" />
+        <img src={LogoTenderSpace} alt="" />
 
       </div>
       <div className="block sm:hidden">
