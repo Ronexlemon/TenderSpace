@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import Approve from "./pages/approve/Approve";
 // import BiderForm from "./pages/biderpostform/BiderForm";
-// import LandingPage from "./pages/LandingPage";
+import LandingPage from "./pages/LandingPage";
 // import TenderAllocation from "./pages/tenderallocation/TenderAllocation";
 // import AvailableTenders from "./pages/tenderpost/AvailableTenders";
 // import DisplayTenders from "./pages/tenderpost/DisplayAvailableTenders";
