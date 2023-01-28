@@ -1,5 +1,5 @@
 # TenderSpace Web App
-## By Dennis Kimathi | Antony Kimani | Ronnex Ondimu
+## By Dennis Kimathi | Antony Kimani | Ronnex Ondimu | Mercy Wanjiru
 
 ## Screenshot
  ![image](./client/src/assets/images/HeroSection.png)
@@ -89,7 +89,7 @@ SOFTWARE.
 Contributors - [Dennis Kimathi](https://github.com/DennohKim)
 [Antony Kimani](https://github.com/anthonykimani)
 [Ronnex Ondimu](https://github.com/Ronexlemon)
-[Kish Wanjiru]()
+[Mercy Wanjiru]()
 
 
 [Go Back to the top](#TenderSpace-Web-app)
