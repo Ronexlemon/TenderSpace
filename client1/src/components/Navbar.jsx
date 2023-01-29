@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import LogoTenderSpace  from '../assets/images/TenderSpaceLogo.svg';
 import { Link } from "react-router-dom";
+import { AppContext } from '../contexts/AppContexts';
 
 
 
 const Navbar = () => {
+  const {
+    userAccount,
+    kit,
+    TenderAddressContract,
+    contract,
+    connectWallet,
+    notification,
+  } = useContext(AppContext);
   const [showMenu, setShowMenu] = useState(false);
 
   const toggleMenu = () => {
@@ -56,9 +65,10 @@ const Navbar = () => {
         </nav>
       </div>
       <div className="hidden sm:block">
-        <Link to="/AvailableTenders">
-        <button className="bg-primary-color font-josefin text-white py-2 px-4 rounded-full">Get Started</button>
+        <Link  to="/AvailableTenders">
+        <button  onClick={()=>{connectWallet()}} className="bg-primary-color font-josefin text-white py-2 px-4 rounded-full">Get Started</button>
         </Link>
+        
         
       </div>
     </div>

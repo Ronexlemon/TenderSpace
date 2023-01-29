@@ -1,9 +1,18 @@
 import { NavLink, Link, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import Logo from "../assets/images/TenderSpaceLogo.svg";
-
+import { AppContext } from "../contexts/AppContexts";
 
 const NavbarHome = (props) => {
+  const {
+    userAccount,
+    kit,
+    TenderAddressContract,
+    contract,
+    connectWallet,
+    getvalue,
+    notification,
+  } = useContext(AppContext);
   const navigate = useNavigate();
 
   const [showMenu, setShowMenu] = useState(false);
@@ -153,6 +162,7 @@ const NavbarHome = (props) => {
           >
             Approve
           </button>
+         
         </div>
       </div>
     </div>

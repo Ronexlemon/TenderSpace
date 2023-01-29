@@ -1,4 +1,5 @@
 import React from 'react'
+import {useContext} from "react"
 import Explore from '../components/Explore'
 import Features from '../components/Features'
 import Footer from '../components/Footer'
@@ -7,8 +8,17 @@ import Navbar from '../components/Navbar'
 import Subscription from '../components/Subscription'
 import Volunteer from '../components/Volunteer'
 import backgroundImage from "../assets/images/HeroBackgroundImage.svg";
+import { AppContext } from '../contexts/AppContexts'
 
 const LandingPage = () => {
+  const {
+    userAccount,
+    kit,
+    TenderAddressContract,
+    contract,
+    connectWallet,
+    notification,
+  } = useContext(AppContext);
   return (
     <div>
       <header

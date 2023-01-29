@@ -1,15 +1,24 @@
 import React from "react";
 import { BiderAbi } from "../../abi/bidercontract_abi";
 import Web3Modal from "web3modal";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState,useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { SiBitcoincash } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
 
 import { providers, Contract } from "ethers";
 import NavbarHome from "../../components/NavbarHome";
+import { AppContext } from "../../contexts/AppContexts";
 
 const BiderForm = () => {
+  const {
+    userAccount,
+    kit,
+    TenderAddressContract,
+    contract,
+    connectWallet,
+    notification,
+  } = useContext(AppContext);
   const navigate = useNavigate();
   const { state } = useLocation();
   const { id } = state; // Read values passed on state
@@ -22,31 +31,31 @@ const BiderForm = () => {
   const [bidertypeOfGoods, setTypeOfGoods] = useState("");
 
   //provide sgner or provider
-  const getProviderOrSigner = async (needSigner = false) => {
-    const provider = await Web3ModalRef.current.connect();
-    const web3Provider = new providers.Web3Provider(provider);
-    // check if network is Mumbai
-    const { chainId } = await web3Provider.getNetwork();
-    if (chainId !== 80001) {
-      window.alert("Change network to Mumbai");
-      throw new Error("Change network To Mumbai");
-    }
-    if (needSigner) {
-      const signer = web3Provider.getSigner();
-      return signer;
-    }
-    return web3Provider;
-  };
+  // const getProviderOrSigner = async (needSigner = false) => {
+  //   const provider = await Web3ModalRef.current.connect();
+  //   const web3Provider = new providers.Web3Provider(provider);
+  //   // check if network is Mumbai
+  //   const { chainId } = await web3Provider.getNetwork();
+  //   if (chainId !== 80001) {
+  //     window.alert("Change network to Mumbai");
+  //     throw new Error("Change network To Mumbai");
+  //   }
+  //   if (needSigner) {
+  //     const signer = web3Provider.getSigner();
+  //     return signer;
+  //   }
+  //   return web3Provider;
+  // };
 
   //call the metamask on page reload
   useEffect(() => {
-    Web3ModalRef.current = new Web3Modal({
-      network: "Mumbai",
-      providerOptions: {},
-      disableInjectedProvider: false,
-      cacheProvider: false,
-    });
-    getProviderOrSigner();
+    // Web3ModalRef.current = new Web3Modal({
+    //   network: "Mumbai",
+    //   providerOptions: {},
+    //   disableInjectedProvider: false,
+    //   cacheProvider: false,
+    // });
+    // getProviderOrSigner();
     settenderIndex(id);
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
@@ -60,15 +69,11 @@ const BiderForm = () => {
     ];
 
     try {
-      const signer = await getProviderOrSigner(true);
-      const BiderContract = new Contract(
-        ContractBiderAddress,
-        BiderAbi,
-        signer
-      );
-      const results = await BiderContract.writeBiderDetails(...params);
+      
+      
+      const results = await contract.writeBiderDetails(...params).send({from:kit.defaultAccount});
 
-      alert("BidSuccessful ");
+      notification("BidSuccessful ");
     } catch (error) {
       alert(error);
     }

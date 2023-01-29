@@ -8,9 +8,11 @@ module.exports = {
   solidity: "0.8.17",
   networks:{
     alfajores:{
-      url:"https://alfajores-forno.celo-testnet.org",
-      accounts: [PRIVATE_KEY],
-    },
+      url:"https://alfajores-forno.celo-testnet.org" ,
+    accounts: [PRIVATE_KEY],
+    chainId: 44787,
+
+    }
     
-  },
+  }
 };
