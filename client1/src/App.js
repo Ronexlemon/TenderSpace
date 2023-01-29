@@ -40,7 +40,7 @@ function App() {
     } else {
       notification("⚠️ Please install the CeloExtensionWallet.");
     }
-    notification(userAccount);
+   
   };
   //alert notification
   const notification = (message) => {

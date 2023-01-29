@@ -60,7 +60,7 @@ const AvailableTenders = () => {
     }, [])
    
     useEffect(() => {
-
+ connectWallet();
        
         //getTotalTendersLength();
         getAllTenders();

@@ -55,7 +55,7 @@ function Approve() {
   // useEffect(()=>{
   //   getAllBids();
   // },[])
-  console.log("the bids",BidTenders[0])
+  console.log("the bids",BidTenders)
   useEffect(() => {
     connectWallet();
     getAllBids();
