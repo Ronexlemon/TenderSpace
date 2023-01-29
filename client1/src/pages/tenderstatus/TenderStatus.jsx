@@ -55,14 +55,8 @@ function TenderStatus() {
   //Approve function
   const approveTender = async (ids) => {
 
-    const signer = await getProviderOrSigner(true);
-
-    const BiderContract = new Contract(
-      ContractBiderAddress,
-      BiderAbi,
-      signer,
-    )
-    const approves = await BiderContract.approveTender(ids);
+    
+    const approves = await BiderContract.approveTender(ids).send({from: kit.defaultAccount});
     // alert(approves);
 
   }
