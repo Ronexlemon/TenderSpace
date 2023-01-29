@@ -1,50 +1,36 @@
 import React from 'react'
-import { BiderAbi } from "../../abi/bidercontract_abi";
-import Web3Modal from "web3modal";
-import { useRef,useEffect,useState } from "react";
-import {providers,Contract} from "ethers";
+
+
+import { useRef,useEffect,useState,useContext } from "react";
+
 import DisplayTenderAllocation from './DisplayTenderAllocation';
 import NavbarHome from '../../components/NavbarHome';
+import { AppContext } from '../../contexts/AppContexts';
 
 function TenderAllocation() {
+  const {
+    userAccount,
+    kit,
+    TenderAddressContract,
+    contract,
+    connectWallet,
+    notification,
+  } = useContext(AppContext);
   const [walletconnect,setWalletConnect] = useState(false);
   const [BidTenders,setBidTenders] = useState([]);
   const [index,setIndex] = useState();
-  const ContractBiderAddress ="0x8fF171857abe05f4642e90Ec243A9553f0853678";
-  const Web3ModalRef = useRef();
-//provide sugner or provider
-const getProviderOrSigner= async(needSigner = false)=>{
-  const provider =await  Web3ModalRef.current.connect();
-  const web3Provider = new providers.Web3Provider(provider);
- // check if network is Mumbai
- const {chainId}  = await web3Provider.getNetwork();
- if(chainId !== 80001){
-  window.alert("Change network to Mumbai");
-  throw new Error("Change network To Mumbai");
- }
  
- if(needSigner){
-  const signer =  web3Provider.getSigner();
-  return signer;
 
- }
- return web3Provider;
-}
 
 //getallbids tenders
 const getAllBids =async () =>{
   let _bidTenders =[];
-  const provider = await getProviderOrSigner();
-  const BidersContract = new Contract(
-    ContractBiderAddress,
-    BiderAbi,
-    provider,
-  )
-  const totalItemsLength = await BidersContract.getTotalBindsLength();
-  //alert(totalItemsLength);
+  
+  const totalItemsLength = await contract.methods.getTotalBindsLength().call({from: kit.defaultAccount});
+  
   for(let i=0;i< (totalItemsLength);i++){
     let _tenderBids = new Promise(async(resolve,reject)=>{
-      let bids = await BidersContract.readBiderDetails(i);
+      let bids = await contract.methods.readBiderDetails(i).call({from : kit.defaultAccount});
       resolve({
         companyNames : bids[0],
         contactAddress : bids[1],
@@ -71,14 +57,10 @@ const getAllBids =async () =>{
 //Approve function
 const approveTender =async (ids)=>{
   
-  const signer = await getProviderOrSigner(true);
+  
 
-  const BiderContract = new Contract(
-    ContractBiderAddress,
-    BiderAbi,
-    signer,
-  )
-  const approves = await BiderContract.approveTender(ids);
+  
+  const approves = await contract.methods.approveTender(ids).send({from : kit.defaultAccount});
  // alert(approves);
   
 }
@@ -88,13 +70,8 @@ const approveTender =async (ids)=>{
 //   getAllBids();
 // },[])
 useEffect(()=>{
-  Web3ModalRef.current = new Web3Modal({
-      network: "Mumbai",
-      providerOptions: {},
-      disableInjectedProvider: false,
-      cacheProvider:false
-      
-    });
+  connectWallet();
+ 
    getAllBids();
 
 },[walletconnect]);

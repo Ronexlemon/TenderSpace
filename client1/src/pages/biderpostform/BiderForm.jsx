@@ -1,12 +1,11 @@
 import React from "react";
-import { BiderAbi } from "../../abi/bidercontract_abi";
-import Web3Modal from "web3modal";
+
 import { useRef, useEffect, useState,useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { SiBitcoincash } from "react-icons/si";
 import { useNavigate } from "react-router-dom";
 
-import { providers, Contract } from "ethers";
+
 import NavbarHome from "../../components/NavbarHome";
 import { AppContext } from "../../contexts/AppContexts";
 
@@ -22,40 +21,17 @@ const BiderForm = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const { id } = state; // Read values passed on state
-  const ContractBiderAddress = "0x8fF171857abe05f4642e90Ec243A9553f0853678"; //"0xb6D6d2e56f6C5E519c871BC682048027171Ba0E1"
-  const Web3ModalRef = useRef();
+  
   const [biderCompanyName, setBiderCompanyName] = useState("");
   const [biderCompanyRegistrationNumber, setBiderCompanyRegistrationNumber] = useState("");
   const [biderContact, setBiderContact] = useState("");
   const [_tenderIndex, settenderIndex] = useState("");
   const [bidertypeOfGoods, setTypeOfGoods] = useState("");
 
-  //provide sgner or provider
-  // const getProviderOrSigner = async (needSigner = false) => {
-  //   const provider = await Web3ModalRef.current.connect();
-  //   const web3Provider = new providers.Web3Provider(provider);
-  //   // check if network is Mumbai
-  //   const { chainId } = await web3Provider.getNetwork();
-  //   if (chainId !== 80001) {
-  //     window.alert("Change network to Mumbai");
-  //     throw new Error("Change network To Mumbai");
-  //   }
-  //   if (needSigner) {
-  //     const signer = web3Provider.getSigner();
-  //     return signer;
-  //   }
-  //   return web3Provider;
-  // };
-
+  
   //call the metamask on page reload
   useEffect(() => {
-    // Web3ModalRef.current = new Web3Modal({
-    //   network: "Mumbai",
-    //   providerOptions: {},
-    //   disableInjectedProvider: false,
-    //   cacheProvider: false,
-    // });
-    // getProviderOrSigner();
+   
     settenderIndex(id);
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, []);
@@ -71,7 +47,7 @@ const BiderForm = () => {
     try {
       
       
-      const results = await contract.writeBiderDetails(...params).send({from:kit.defaultAccount});
+      const results = await contract.methods.writeBiderDetails(...params).send({from:kit.defaultAccount});
 
       notification("BidSuccessful ");
     } catch (error) {
@@ -83,16 +59,7 @@ const BiderForm = () => {
     //prevent page refresh
     e.preventDefault();
 
-    // //creating an object
-    // let tender={
-    //     companyName,
-    //     description,
-    //     deadline,
-    //     contact,
-    //     email,
-    //     amount
-    // }
-    // setTenders([...tenders, tender]);
+   
     setBiderCompanyName("");
     setBiderContact("");
     setTypeOfGoods("");

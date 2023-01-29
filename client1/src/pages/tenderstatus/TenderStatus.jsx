@@ -2,7 +2,7 @@ import React from 'react';
 
 
 import { useRef, useEffect, useState,useContext } from "react";
-import { providers, Contract } from "ethers";
+
 import DisplayTenderStatus from "./DisplayTenderStatus"
 import NavbarHome from '../../components/NavbarHome';
 import { AppContext } from '../../contexts/AppContexts';
@@ -26,10 +26,10 @@ function TenderStatus() {
     let _bidTenders = [];
     
     const totalItemsLength = await contract.methods.getTotalBindsLength().call({from: kit.defaultAccount});
-    //alert(totalItemsLength);
+    console.log("the lent:",totalItemsLength);
     for (let i = 0; i < (totalItemsLength); i++) {
       let _tenderBids = new Promise(async (resolve, reject) => {
-        let bids = await contract.readBiderDetails(i).call({from: kit.defaultAccount});
+        let bids = await contract.methods.readBiderDetails(i).call({from: kit.defaultAccount});
         resolve({
           companyNames: bids[0],
           contactAddress: bids[1],
@@ -56,7 +56,7 @@ function TenderStatus() {
   const approveTender = async (ids) => {
 
     
-    const approves = await BiderContract.approveTender(ids).send({from: kit.defaultAccount});
+    const approves = await contract.methods.approveTender(ids).send({from: kit.defaultAccount});
     // alert(approves);
 
   }
@@ -66,16 +66,11 @@ function TenderStatus() {
   //   getAllBids();
   // },[])
   useEffect(() => {
-    Web3ModalRef.current = new Web3Modal({
-      network: "Mumbai",
-      providerOptions: {},
-      disableInjectedProvider: false,
-      cacheProvider: false
-
-    });
+    connectWallet();
+    
     getAllBids();
 
-  }, [walletconnect]);
+  }, [walletconnect,contract,userAccount]);
 
   return (
     <div>

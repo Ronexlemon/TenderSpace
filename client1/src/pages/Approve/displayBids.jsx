@@ -9,7 +9,7 @@ const DisplayBids = (props) => {
   const [color, setColor] = useState(true);
 
   return (
-    <div className="w-10/12 mx-auto my-10">
+    <div   className="w-10/12 mx-auto my-10">
       
       <div className="w-full">
         <table className="min-w-max w-full table-auto">
@@ -26,10 +26,11 @@ const DisplayBids = (props) => {
           <tbody className="text-[#130026]  text-sm font-light">
             {props.bids.map((tender, index) => (
               <>
-                {tender.choice === 0 ? (
+                {tender.choice == 0 ? (
                   <>
                     <tr
                       key={tender.bidIndex}
+                      
                       className="border-b border-gray-200 hover:bg-gray-100"
                     >
                       <td className="py-3 px-2 text-left whitespace-nowrap">
@@ -58,7 +59,7 @@ const DisplayBids = (props) => {
                       <td className="py-3 px-2 text-left">
                         <div className="flex items-center">
                           <div className="mr-2"></div>
-                          {tender.choice === 0 && (
+                          {tender.choice == 1 && (
                             <p
                               className="py-2 px-5 bg-orange/20 rounded-full font-josefin font-normal"
                               style={{ color: color ? "orange" : "green" }}
