@@ -44,7 +44,7 @@ Figma Design -[TenderSpace-Web-app](https://www.figma.com/file/fxzefSk00z49RSq63
 
  ### Installation Process
  ****
-* Clone to the repo : git clone https://github.com/DennohKim/TenderSpace-Polygon
+* Clone to the repo : git clone https://github.com/Ronexlemon/TenderSpace
 * Run the following command to start the vite app ``` npm run dev```
 
  ****
