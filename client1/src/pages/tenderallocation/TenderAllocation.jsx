@@ -70,11 +70,11 @@ const approveTender =async (ids)=>{
 //   getAllBids();
 // },[])
 useEffect(()=>{
-  connectWallet();
+  //connectWallet();
  
    getAllBids();
 
-},[walletconnect]);
+},[]);
   
   return (
     <div>

@@ -60,12 +60,12 @@ const AvailableTenders = () => {
     }, [])
    
     useEffect(() => {
- connectWallet();
+ //connectWallet();
        
         //getTotalTendersLength();
         getAllTenders();
         //renderProducts();
-    }, [tenderslength]);
+    }, []);
 
     return (
         <div>

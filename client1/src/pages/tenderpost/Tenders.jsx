@@ -92,10 +92,10 @@ const Tenders = () => {
   
   
   useEffect(() => {
-    connectWallet();
+   // connectWallet();
     
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [walletconnect, tenderslength,contract,userAccount]);
+  }, []);
 
   return (
     <>
@@ -109,12 +109,12 @@ const Tenders = () => {
               </h1>
               <p className="py-4 pr-4 font-josefin">
                 Connect wallet to fill the form below.
-                {userAccount}
+                
               </p>
             </div>
 
             <div>
-            {userAccount !==  null?  <button
+            {userAccount ==  null?  <button
                 onClick={()=>{connectWallet()}}
                 className="px-4 py-2 font-josefin text-white bg-primary-color rounded-full shadow-md hover:shadow-lg"
               >
@@ -125,7 +125,7 @@ const Tenders = () => {
                 className="px-4 py-2 font-josefin text-white rounded-full shadow-md hover:shadow-lg bg-green"
               >
                 
-                Connected
+                {userAccount.substring(0, 8)} ...
               </button> }
              
             </div>

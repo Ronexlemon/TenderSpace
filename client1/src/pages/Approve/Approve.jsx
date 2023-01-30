@@ -57,9 +57,10 @@ function Approve() {
   // },[])
   console.log("the bids",BidTenders)
   useEffect(() => {
-    connectWallet();
+    //connectWallet();
     getAllBids();
-  }, [walletconnect,contract,userAccount]);
+  }, []);
+
 
   return (
     <div>
