@@ -52,6 +52,7 @@ Figma Design -[TenderSpace-Web-app](https://www.figma.com/file/fxzefSk00z49RSq63
 
 ### Live Link
 - Click this link to view the live application 
+- https://tender-space.vercel.app/
 
 ### Technology  Used
 * REACT - which was used to develope the structure off the pages.
