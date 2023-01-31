@@ -2,7 +2,7 @@
 ## By Dennis Kimathi | Antony Kimani | Ronnex Ondimu | Mercy Wanjiru
 
 ## Screenshot
- ![image](./client/src/assets/images/HeroSection.png)
+ ![image](./client1/src/assets/images/HeroSection.png)
 
  ## Table of Content
  - [Description](#description)
@@ -45,7 +45,7 @@ Figma Design -[TenderSpace-Web-app](https://www.figma.com/file/fxzefSk00z49RSq63
  ### Installation Process
  ****
 * Clone to the repo : git clone https://github.com/Ronexlemon/TenderSpace
-* Run the following command to start the vite app ``` npm run dev```
+* Run the following command to start the vite app ``` npm start```
 
  ****
  [Go Back to the top](#TenderSpace-Web-app)
